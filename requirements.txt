@@ -1,6 +1,6 @@
 urllib3
 certifi
-dotenv
+python-dotenv
 pandas
 dash
 plotly
