@@ -1,2 +1,5 @@
 # ignore credentials
 .env
+.DS_store
+.pytest_cache
+**/__pycache__
