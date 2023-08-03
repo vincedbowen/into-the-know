@@ -16,7 +16,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Analysing the code with pylint
+    - name: Testing with pytest
+      run: |
+        pytest
+    - name: Analysing code with pylint
       run: |
         pylint my_app.py --exit-zero
         pylint back_end.py --exit-zero
