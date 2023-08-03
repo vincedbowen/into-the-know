@@ -1,18 +1,48 @@
 from dash import Dash, html, dcc, callback, Output, Input
+import dash_bootstrap_components as dbc
 import plotly.express as px
 import back_end
 
-app = Dash(__name__)
+app = Dash(external_stylesheets=[dbc.themes.FLATLY])
 
+
+
+navbar = dbc.NavbarSimple(
+    children=[
+        dbc.DropdownMenu(
+            children=[
+                dbc.DropdownMenuItem("My Progression", href="#"),
+                dbc.DropdownMenuItem("My Archetype", href="#"),
+            ],
+            nav=True,
+            in_navbar=True,
+            label="Cycle",
+        ),
+        dbc.DropdownMenu(
+            children=[
+                dbc.DropdownMenuItem("My Progression", href="#"),
+                dbc.DropdownMenuItem("My Archetype", href="#"),
+            ],
+            nav=True,
+            in_navbar=True,
+            label="Run",
+        ),
+    ],
+    brand="Into the Know",
+    brand_href="#",
+    color="primary",
+    dark=True,
+)
 
 app.layout = html.Div([
-html.Div(children='Welcome: '),
-dcc.RadioItems(options=['Average Watts', 'Maximum Watts'],
-value='Average Watts', id='controls-and-radio-item'),
-dcc.Graph(figure={}, id='controls-and-graph',
-    config={
-        'displayModeBar': False
-    })
+    navbar,
+    html.Div(children='Welcome: '),
+    dcc.RadioItems(options=['Average Watts', 'Maximum Watts'],
+    value='Average Watts', id='controls-and-radio-item'),
+    dcc.Graph(figure={}, id='controls-and-graph',
+        config={
+            'displayModeBar': False
+        })
 ])
 
 @callback(
