@@ -5,7 +5,7 @@ def create_navbar():
         children=[
             dbc.DropdownMenu(
                 children=[
-                    dbc.DropdownMenuItem("My Progression", href="cycling_graph.py"),
+                    dbc.DropdownMenuItem("My Progression", href="/cycling-graph"),
                     dbc.DropdownMenuItem("My Archetype", href="#"),
                 ],
                 nav=True,

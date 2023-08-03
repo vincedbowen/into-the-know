@@ -1,14 +1,19 @@
+import dash
 from dash import Dash, html, dcc, callback, Output, Input
 import plotly.express as px
 import back_end
 import navbar
 import dash_bootstrap_components as dbc
 
-app = Dash(external_stylesheets=[dbc.themes.FLATLY])
+dash.register_page(
+    __name__,
+    title='test',
+    name='Cycling Graph'
+)
 
 
-app.layout = html.Div([
-    navbar.create_navbar(),
+layout = html.Div([
+    # navbar.create_navbar(),
     html.Div(children='Welcome: '),
     dbc.RadioItems(
         options=['Average Watts', 'Maximum Watts'],
@@ -30,7 +35,3 @@ def update_graph(col_chosen):
     fig = px.line(back_end.initialize(), x='Date', y=col_chosen)
     return fig
 
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
