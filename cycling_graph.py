@@ -1,41 +1,14 @@
 from dash import Dash, html, dcc, callback, Output, Input
-import dash_bootstrap_components as dbc
 import plotly.express as px
 import back_end
+import navbar
+import dash_bootstrap_components as dbc
 
 app = Dash(external_stylesheets=[dbc.themes.FLATLY])
 
 
-
-navbar = dbc.NavbarSimple(
-    children=[
-        dbc.DropdownMenu(
-            children=[
-                dbc.DropdownMenuItem("My Progression", href="#"),
-                dbc.DropdownMenuItem("My Archetype", href="#"),
-            ],
-            nav=True,
-            in_navbar=True,
-            label="Cycle",
-        ),
-        dbc.DropdownMenu(
-            children=[
-                dbc.DropdownMenuItem("My Progression", href="#"),
-                dbc.DropdownMenuItem("My Archetype", href="#"),
-            ],
-            nav=True,
-            in_navbar=True,
-            label="Run",
-        ),
-    ],
-    brand="Into the Know",
-    brand_href="#",
-    color="primary",
-    dark=True,
-)
-
 app.layout = html.Div([
-    navbar,
+    navbar.create_navbar(),
     html.Div(children='Welcome: '),
     dcc.RadioItems(options=['Average Watts', 'Maximum Watts'],
     value='Average Watts', id='controls-and-radio-item'),
