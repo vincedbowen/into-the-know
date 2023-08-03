@@ -9,7 +9,10 @@ app.layout = html.Div([
 html.Div(children='Welcome: '),
 dcc.RadioItems(options=['Average Watts', 'Maximum Watts'],
 value='Average Watts', id='controls-and-radio-item'),
-dcc.Graph(figure={}, id='controls-and-graph')
+dcc.Graph(figure={}, id='controls-and-graph',
+    config={
+        'displayModeBar': False
+    })
 ])
 
 @callback(
