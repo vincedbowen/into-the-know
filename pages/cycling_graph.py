@@ -5,11 +5,7 @@ import back_end
 import navbar
 import dash_bootstrap_components as dbc
 
-dash.register_page(
-    __name__,
-    title='test',
-    name='Cycling Graph'
-)
+dash.register_page( __name__)
 
 
 layout = html.Div([
