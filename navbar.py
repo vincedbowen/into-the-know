@@ -5,7 +5,7 @@ def create_navbar():
         children=[
             dbc.DropdownMenu(
                 children=[
-                    dbc.DropdownMenuItem("My Progression", href="#"),
+                    dbc.DropdownMenuItem("My Progression", href="cycling_graph.py"),
                     dbc.DropdownMenuItem("My Archetype", href="#"),
                 ],
                 nav=True,
@@ -23,7 +23,7 @@ def create_navbar():
             ),
         ],
         brand="Into the Know",
-        brand_href="#",
+        brand_href="home.py",
         color="primary",
         dark=True,
     )

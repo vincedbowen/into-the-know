@@ -10,8 +10,12 @@ app = Dash(external_stylesheets=[dbc.themes.FLATLY])
 app.layout = html.Div([
     navbar.create_navbar(),
     html.Div(children='Welcome: '),
-    dcc.RadioItems(options=['Average Watts', 'Maximum Watts'],
-    value='Average Watts', id='controls-and-radio-item'),
+    dbc.RadioItems(
+        options=['Average Watts', 'Maximum Watts'],
+        value='Average Watts', 
+        id='controls-and-radio-item',
+        inline = True
+    ),
     dcc.Graph(figure={}, id='controls-and-graph',
         config={
             'displayModeBar': False
