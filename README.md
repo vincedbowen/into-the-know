@@ -1,3 +1,3 @@
 # cycling-data
-![pytests](https://github.com/github/docs/actions/workflows/pylint.yml/badge.svg)
+![pytests](https://github.com/github/docs/actions/workflows/test_and_lint.yml/badge.svg)
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
