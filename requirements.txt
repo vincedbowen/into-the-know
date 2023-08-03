@@ -1,0 +1,8 @@
+os
+json
+urllib3
+certifi
+dotenv
+pandas
+dash
+plotly
