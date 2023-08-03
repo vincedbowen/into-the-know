@@ -1,4 +1,4 @@
-from myApp import json_to_dict, dict_to_df
+from my_app import json_to_dict, dict_to_df
 import json
 import pandas as pd
 
