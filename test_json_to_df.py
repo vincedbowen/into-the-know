@@ -1,4 +1,3 @@
-import my_app
 import back_end 
 import json
 import pandas as pd
