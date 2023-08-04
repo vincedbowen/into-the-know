@@ -5,8 +5,7 @@ import back_end
 import dash_bootstrap_components as dbc
 
 dash.register_page(
-    __name__,
-    name = 'Cycling Graph'
+    __name__
 )
 
 

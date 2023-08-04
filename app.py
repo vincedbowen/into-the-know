@@ -8,9 +8,8 @@ navbar = dbc.NavbarSimple(
     children=[
         dbc.DropdownMenu(
             children=[
-                dbc.DropdownMenuItem(page['name'], href=page['relative_path'])
-                for page in dash.page_registry.values()
-                if page['name'] == "Cycling Graph" or page['name'] == 'Cycling Archetype'
+                dbc.DropdownMenuItem('Cycling Graph', href='/cycling-graph'),
+                dbc.DropdownMenuItem('Cycling Archetype', href='/cycling-archetype'),
             ],
             nav=True,
             in_navbar=True,
@@ -18,9 +17,8 @@ navbar = dbc.NavbarSimple(
         ),
         dbc.DropdownMenu(
             children=[
-                dbc.DropdownMenuItem(page['name'], href=page['relative_path'])
-                for page in dash.page_registry.values()
-                if page['name'] == 'Running Graph' or page['name'] == 'Running Archetype'
+                dbc.DropdownMenuItem('Running Graph', href='/running-graph'),
+                dbc.DropdownMenuItem('Running Archetype', href='/running-archetype'),
             ],
             nav=True,
             in_navbar=True,
