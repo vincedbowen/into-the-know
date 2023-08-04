@@ -2,7 +2,6 @@ import dash
 from dash import Dash, html, dcc, callback, Output, Input
 import plotly.express as px
 import back_end
-import navbar
 import dash_bootstrap_components as dbc
 
 dash.register_page(

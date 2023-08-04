@@ -29,14 +29,14 @@ navbar = dbc.NavbarSimple(
         dbc.NavItem(dbc.NavLink('About', href= '/about'))
     ],
     brand='Into the Know',
-    brand_href='home',
+    brand_href='/',
     color='primary',
     dark=True,
 )
 
 app.layout = html.Div([
     navbar,
-	dash.page_container
+	dash.page_container,
 ])
 
 if __name__ == '__main__':
