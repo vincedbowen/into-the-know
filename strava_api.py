@@ -45,3 +45,4 @@ def get_activities(http):
     )
     activity_data = json.loads(activity_response.data)
     return activity_data
+    

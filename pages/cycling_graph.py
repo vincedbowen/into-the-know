@@ -1,8 +1,9 @@
 import dash
-from dash import Dash, html, dcc, callback, Output, Input
+from dash import html, dcc, callback, Output, Input
 import plotly.express as px
-import back_end
 import dash_bootstrap_components as dbc
+import graph_generator
+
 
 dash.register_page(
     __name__
@@ -14,7 +15,7 @@ layout = html.Div([
     html.Div(children='Welcome: '),
     dbc.RadioItems(
         options=['Average Watts', 'Maximum Watts'],
-        value='Average Watts', 
+        value='Average Watts',
         id='controls-and-radio-item',
         inline = True
     ),
@@ -29,6 +30,6 @@ layout = html.Div([
     Input(component_id='controls-and-radio-item', component_property='value')
 )
 def update_graph(col_chosen):
-    fig = px.line(back_end.initialize(), x='Date', y=col_chosen)
+    data_frame_to_graph = graph_generator.strava_data_for_graph()
+    fig = px.line(data_frame_to_graph, x='Date', y=col_chosen)
     return fig
-

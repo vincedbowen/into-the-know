@@ -1,9 +1,10 @@
 import dash
 from dash import html
 
-dash.register_page( 
+dash.register_page(
     __name__,
-    path = '/')
+    path = '/'
+)
 
 layout = html.Div([
     # navbar.create_navbar(),
