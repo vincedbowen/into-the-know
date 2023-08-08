@@ -21,4 +21,4 @@ jobs:
         pytest
     - name: Analysing code with pylint
       run: |
-        pylint app.py back_end.py pages/about.py pages/cycling_archetype.py pages/cycling_graph.py pages/home.py pages/running_archetype.py pages/running_graph.py --exit-zero
+        pylint app.py strava_api.py graph_generator.py pages/about.py pages/cycling_archetype.py pages/cycling_graph.py pages/home.py pages/running_archetype.py pages/running_graph.py --exit-zero
