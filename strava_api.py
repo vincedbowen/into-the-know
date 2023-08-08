@@ -73,7 +73,7 @@ def get_activities(http):
         http: an instance of urllib3 Pool Manager 
     
     Returns:
-        activity_data: a dictionary (json) holding all
+        activity_data: a json holding all
             public user activities
     """
     activity_response = http.request(
@@ -87,3 +87,27 @@ def get_activities(http):
     )
     activity_data = json.loads(activity_response.data)
     return activity_data
+
+def get_zones(http, activity_id):
+    """
+    For premium Strava users only. Returns a list of zones for a specific activity
+
+    Parameters:
+        http: an instance of urllib3 Pool Manager 
+        activity_id: the id of activity to determine training zone
+    
+    Returns:
+        zone_data: a json holding training zones for a specific activity
+    """
+    
+    zone_response = http.request(
+        "GET",
+        "https://www.strava.com/api/v3/activities/{}/zones".format(activity_id),
+        headers={
+            'Authorization': 'Bearer ' + authenticate()
+        },
+        timeout = 4,
+        retries = 4
+    )
+    zone_data = json.loads(zone_response.data)
+    return zone_data
