@@ -6,6 +6,18 @@ import certifi
 
 
 def connect_to_urllib():
+    """
+    Creates a Pool Manager instance to allow requests to be made.
+    "This object handles all of the details of 
+    connection pooling and thread safety so that you don't have to"
+        -(https://urllib3.readthedocs.io/en/stable/user-guide.html)
+    
+    Parameters: 
+        None
+
+    Returns:
+        http: an instance of urllib3 Pool Manager 
+    """
     #Get request to strava API
     http = urllib3.PoolManager(
         cert_reqs="CERT_REQUIRED",
@@ -16,11 +28,31 @@ def connect_to_urllib():
     return http
 
 def authenticate():
+    """
+    Sets enviroment varialbe credentials using dotenv.
+
+    Parameters: 
+        None
+
+    Returns:
+        strava_authorization: access token required to make calls 
+            with the Strava API
+    """
     load_dotenv()
     strava_authorization = os.getenv('stravaAuth')
     return strava_authorization
 
 def get_athlete(http):
+    """
+    Displays data of the current authorized user.
+
+    Parameters:
+        http: an instance of urllib3 Pool Manager 
+    
+    Returns:
+        athlete_data: a dictionary (json) holding data
+            regarding the current Strava user
+    """
     athlete_response = http.request(
         "GET",
         "https://www.strava.com/api/v3/athlete/",
@@ -34,6 +66,16 @@ def get_athlete(http):
     return athlete_data
 
 def get_activities(http):
+    """
+    Displays a list of the current authorized user's activities.
+
+    Parameters:
+        http: an instance of urllib3 Pool Manager 
+    
+    Returns:
+        activity_data: a dictionary (json) holding all
+            public user activities
+    """
     activity_response = http.request(
         "GET",
         "https://www.strava.com/api/v3/athlete/activities",
@@ -45,4 +87,3 @@ def get_activities(http):
     )
     activity_data = json.loads(activity_response.data)
     return activity_data
-    
