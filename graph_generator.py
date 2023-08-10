@@ -122,7 +122,6 @@ def activity_zone(connection, activity_data_frame):
         #Add one to zone because python is 0-indexed but heartrate zones are not
         activity_zone += 1
         activity_data_frame.loc[df_id, ['Heart Rate Zone']] = activity_zone
-    print(activity_data_frame)
     return activity_data_frame
 
 

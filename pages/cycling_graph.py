@@ -41,11 +41,11 @@ def update_radio_items(strava_premium_checklist):
     if(strava_premium_checklist == [1]):
         return [{"label": "Average Watts", "value": "Average Watts"}, 
             {"label":"Maximum Watts", "value": "Maximum Watts"}, 
-            {"label": "Heart Rate Zones and Power", "value": 2, "disabled": False},]
+            {"label": "Heart Rate Zone", "value": "Heart Rate Zone", "disabled": False},]
     else:
         return [{"label": "Average Watts", "value": "Average Watts"}, 
             {"label":"Maximum Watts", "value": "Maximum Watts"}, 
-            {"label": "Heart Rate Zones and Power", "value": 2, "disabled": True},]
+            {"label": "Heart Rate Zone", "value": "Heart Rate Zone", "disabled": True},]
 
 @callback(
     Output(component_id="controls-and-radio-item", component_property="value"),
@@ -69,7 +69,10 @@ display_graph = html.Div(
 )
 def update_graph(col_chosen):
     data_frame_to_graph = graph_generator.strava_data_for_graph()
-    fig = px.line(data_frame_to_graph, x='Date', y=col_chosen)
+    if col_chosen != "Heart Rate Zone":
+        fig = px.line(data_frame_to_graph, x='Date', y=col_chosen)
+    else:
+        fig = px.line(data_frame_to_graph, x='Date', y='Average Watts', color = 'Heart Rate Zone')
     return fig
 
 layout = html.Div([strava_premium, graph_options, display_graph])
