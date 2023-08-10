@@ -12,6 +12,11 @@ def connect_to_strava():
         connection: an instance of urllib3 Pool Manager 
     """
     connection = strava_api.connect_to_urllib()
+    need_new_auth = strava_api.need_new_token(http=connection)
+    if need_new_auth == True:
+        strava_api.generate_new_token(http=connection)
+    else:
+        print("no new auth needed")
     return connection
 
 def strava_data_for_graph():
@@ -30,8 +35,9 @@ def strava_data_for_graph():
     activity_list = strava_api.get_activities(http = connection)
     activity_dict = json_to_dict(activity_data=activity_list)
     activity_data_frame = dict_to_df(dictionary=activity_dict)
-    if bool_premium_user == True:
-        activity_zone(connection=connection, activity_data_frame=activity_data_frame)
+    #! commenting out to save API calls until I focus on making them more efficient
+    # if bool_premium_user == True:
+    #     activity_zone(connection=connection, activity_data_frame=activity_data_frame)
     return activity_data_frame
 
 def json_to_dict(activity_data):

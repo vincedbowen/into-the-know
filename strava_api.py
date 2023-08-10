@@ -29,7 +29,7 @@ def connect_to_urllib():
 
 def authenticate():
     """
-    Sets enviroment varialbe credentials using dotenv.
+    Retrieves Authorization token for Strava API.
 
     Parameters: 
         None
@@ -111,3 +111,57 @@ def get_zones(http, activity_id):
     )
     zone_data = json.loads(zone_response.data)
     return zone_data
+
+def need_new_token(http):
+    """
+    Determines if a new access token needs to be generated. Through the Strava
+    API, access keys expire every 6 hours. 
+
+    Parameters:
+        http: an instance of urllib3 Pool Manager 
+    
+    Returns:
+        boolean: returns boolean value for if a new token
+             must be generated
+    """
+    auth_response = http.request(
+        "GET",
+        "https://www.strava.com/api/v3/athlete/activities",
+        headers={
+            'Authorization': 'Bearer ' + authenticate()
+        },
+        timeout = 4,
+        retries = 4
+    )
+    auth_status = auth_response.status
+    if auth_status == 401:
+        return True
+    else:
+        return False
+
+def generate_new_token(http):
+    """
+    Generates a new access token for the Strava API. This will 
+    be saved as an enviromental variable.
+
+    Parameters:
+        http: an instance of urllib3 Pool Manager 
+    
+    Returns:
+        Nothing
+    """
+    load_dotenv()
+    client_id = os.getenv('client_id')
+    client_secret = os.getenv('client_secret')
+    refresh_token = os.getenv('refresh_token')
+    refresh_url = "https://www.strava.com/api/v3/oauth/token?client_id=" + client_id + "&client_secret=" + client_secret + "&grant_type=refresh_token&refresh_token=" + refresh_token +"&scope=read, activity:read"
+    token_response = http.request(
+        "Post",
+        refresh_url,
+        headers={
+            'Authorization': 'Bearer ' + authenticate()
+        }
+    )
+    refresh_data = json.loads(token_response.data)
+    os.environ["stravaAuth"] = refresh_data["access_token"]
+    return
