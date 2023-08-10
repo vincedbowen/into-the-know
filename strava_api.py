@@ -154,7 +154,10 @@ def generate_new_token(http):
     client_id = os.getenv('client_id')
     client_secret = os.getenv('client_secret')
     refresh_token = os.getenv('refresh_token')
-    refresh_url = "https://www.strava.com/api/v3/oauth/token?client_id=" + client_id + "&client_secret=" + client_secret + "&grant_type=refresh_token&refresh_token=" + refresh_token +"&scope=read, activity:read"
+    refresh_url = ("https://www.strava.com/api/v3/oauth/token?client_id=" + client_id + 
+            "&client_secret=" + client_secret + "&grant_type=refresh_token&refresh_token=" + 
+            refresh_token +"&scope=read, activity:read"
+            )
     token_response = http.request(
         "Post",
         refresh_url,
@@ -163,5 +166,5 @@ def generate_new_token(http):
         }
     )
     refresh_data = json.loads(token_response.data)
-    os.environ["stravaAuth"] = refresh_data["access_token"]
+    os.environ["authorization_token"] = refresh_data["access_token"]
     return
