@@ -39,7 +39,7 @@ def authenticate():
             with the Strava API
     """
     load_dotenv()
-    strava_authorization = os.getenv('stravaAuth')
+    strava_authorization = os.getenv('authorization_token')
     return strava_authorization
 
 def get_athlete(http):
