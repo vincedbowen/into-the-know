@@ -2,14 +2,17 @@ import pandas as pd
 import strava_api
 
 def connect_to_strava():
-    """
-    Connects to the Strava API through urllib3
+    """Summary line.
 
-    Parameters:
-        None
+    Extended description of function.
+
+    Args:
+        arg1 (int): Description of arg1
+        arg2 (str): Description of arg2
 
     Returns:
-        connection: an instance of urllib3 Pool Manager 
+        bool: Description of return value
+
     """
     connection = strava_api.connect_to_urllib()
     need_new_auth = strava_api.need_new_token(http=connection)

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>strava_api module &#8212; Into the Know 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b3523f8e" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=f6245a2f"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-strava_api">
+<span id="strava-api-module"></span><h1>strava_api module<a class="headerlink" href="#module-strava_api" title="Permalink to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="strava_api.authenticate">
+<span class="sig-prename descclassname"><span class="pre">strava_api.</span></span><span class="sig-name descname"><span class="pre">authenticate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#strava_api.authenticate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves Authorization token for Strava API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>access token required to make calls</dt><dd><p>with the Strava API</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>strava_authorization</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="strava_api.connect_to_urllib">
+<span class="sig-prename descclassname"><span class="pre">strava_api.</span></span><span class="sig-name descname"><span class="pre">connect_to_urllib</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#strava_api.connect_to_urllib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Pool Manager instance to allow requests to be made.
+“This object handles all of the details of
+connection pooling and thread safety so that you don’t have to”</p>
+<blockquote>
+<div><p>-(<a class="reference external" href="https://urllib3.readthedocs.io/en/stable/user-guide.html">https://urllib3.readthedocs.io/en/stable/user-guide.html</a>)</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an instance of urllib3 Pool Manager</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>http</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="strava_api.generate_new_token">
+<span class="sig-prename descclassname"><span class="pre">strava_api.</span></span><span class="sig-name descname"><span class="pre">generate_new_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">http</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#strava_api.generate_new_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a new access token for the Strava API. This will
+be saved as an enviromental variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>http</strong> – an instance of urllib3 Pool Manager</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nothing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="strava_api.get_activities">
+<span class="sig-prename descclassname"><span class="pre">strava_api.</span></span><span class="sig-name descname"><span class="pre">get_activities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">http</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#strava_api.get_activities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a list of the current authorized user’s activities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>http</strong> – an instance of urllib3 Pool Manager</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>a json holding all</dt><dd><p>public user activities</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>activity_data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="strava_api.get_athlete">
+<span class="sig-prename descclassname"><span class="pre">strava_api.</span></span><span class="sig-name descname"><span class="pre">get_athlete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">http</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#strava_api.get_athlete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays data of the current authorized user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>http</strong> – an instance of urllib3 Pool Manager</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>a dictionary (json) holding data</dt><dd><p>regarding the current Strava user</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>athlete_data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="strava_api.get_zones">
+<span class="sig-prename descclassname"><span class="pre">strava_api.</span></span><span class="sig-name descname"><span class="pre">get_zones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">http</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activity_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#strava_api.get_zones" title="Permalink to this definition">¶</a></dt>
+<dd><p>For premium Strava users only. Returns a list of zones for a specific activity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>http</strong> – an instance of urllib3 Pool Manager</p></li>
+<li><p><strong>activity_id</strong> – the id of activity to determine training zone</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a json holding training zones for a specific activity</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>zone_data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="strava_api.need_new_token">
+<span class="sig-prename descclassname"><span class="pre">strava_api.</span></span><span class="sig-name descname"><span class="pre">need_new_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">http</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#strava_api.need_new_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines if a new access token needs to be generated. Through the Strava
+API, access keys expire every 6 hours.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>http</strong> – an instance of urllib3 Pool Manager</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>returns boolean value for if a new token</dt><dd><p>must be generated</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Into the Know</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Vincent Bowen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/strava_api.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
