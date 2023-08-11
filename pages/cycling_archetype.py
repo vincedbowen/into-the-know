@@ -10,7 +10,7 @@ dash.register_page(__name__)
 
 power_form = dbc.Form(
     id= "power-form",
-    children = dbc.Row(
+    children = [dbc.Row(
         [
             dbc.Col(
                 [
@@ -30,7 +30,7 @@ power_form = dbc.Form(
                         placeholder="Enter Power Max...",
                     ),
                 ],
-                width=2,
+                width=5,
             ),
             dbc.Col(
                 [
@@ -50,11 +50,17 @@ power_form = dbc.Form(
                         placeholder="Enter Power Max...",
                     ),
                 ],
-                width=2,
+                width=5,
             ),
-            dbc.Col(dbc.Button("Submit", color="primary"), width="auto", class_name= "py-5"),
+            
         ],
-    )
+    ),
+    dbc.Row(
+        [
+            dbc.Col(dbc.Button("Graph", color="primary"), width="auto", class_name= "py-3"),
+        ],
+    )],
+    class_name="py-5 px-0"
 )
 
 graph = html.Div([
@@ -93,5 +99,14 @@ def update_radar_graph(power_form, one_sec_max, ten_sec_max, one_min_max, five_m
     return fig
 
 
-layout = html.Div([power_form, graph])
+layout = dbc.Container(
+    children = dbc.Row(
+        [
+            dbc.Col(power_form, class_name="ps-5 pe-0"), 
+            dbc.Col(graph, class_name="ps-0 pe-5")
+        ],
+        justify="around",
+        
+    )
+)
 
