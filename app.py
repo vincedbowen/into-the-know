@@ -33,7 +33,7 @@ navbar = dbc.NavbarSimple(
     color='primary',
     dark=True,
     fluid=True,
-    class_name="ps-2 pe-5"
+    class_name="ps-2 pe-md-5 pe-lg-5 pe-xl-5 pe-xxl-5"
 )
 
 app.layout = html.Div([
