@@ -1,6 +1,6 @@
 """Generate Graph for cycling power.
 
-This module provides the nessecary functions to generate graphical
+This module provides the necessary functions to generate graphical
 views of a strava user's power over time. 
 
 """
