@@ -11,7 +11,7 @@ def connect_to_strava():
         None
 
     Returns:
-        connection(object): An instance of urllib3 Pool Manager 
+        object: An instance of urllib3 Pool Manager 
 
     """
     connection = strava_api.connect_to_urllib()
@@ -32,7 +32,7 @@ def strava_data_for_graph():
         None
     
     Returns:
-        activitiy_data_frame(dataframe): dataframe containing all activities
+        dataframe: dataframe containing all activities
     """
     connection = connect_to_strava()
     bool_premium_user = is_user_premium(connection = connection)
@@ -54,7 +54,7 @@ def json_to_dict(activity_data):
         activity_data(json): a json containing list of activities
     
     Returns:
-        data_dict(dict): dictionary containing list of activities
+        dictionary: dictionary containing list of activities
     """
     data_dict = {}
     if not activity_data:
@@ -81,7 +81,7 @@ def dict_to_df(dictionary):
         dictionary(dict): dictionary containing list of activities
     
     Returns:
-        data_frame(dataframe): dataframe containing all activities
+        dataframe: dataframe containing all activities
     """
     data_frame= pd.DataFrame.from_dict(dictionary, orient='index')
     data_frame= data_frame.iloc[::-1]
@@ -119,7 +119,7 @@ def activity_zone(connection, activity_data_frame):
         activity_data_frame(dataframe): dataframe containing id, date, avg watts, max watts
     
     Returns:
-        activity_dataframe(dataframe): returns an updated dataframe with zone data
+        dataframe: returns an updated dataframe with zone data
     """
     heart_rate_zones = []
     break_down_zones = dict()
