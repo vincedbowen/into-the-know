@@ -2,16 +2,16 @@ import pandas as pd
 import strava_api
 
 def connect_to_strava():
-    """Summary line.
+    """Connect to strava API
 
-    Extended description of function.
+    Connect to Strava API by creating an instance
+    of urllib3 pool manager. 
 
     Args:
-        arg1 (int): Description of arg1
-        arg2 (str): Description of arg2
+        None
 
     Returns:
-        bool: Description of return value
+        connection(object): An instance of urllib3 Pool Manager 
 
     """
     connection = strava_api.connect_to_urllib()
@@ -23,15 +23,16 @@ def connect_to_strava():
     return connection
 
 def strava_data_for_graph():
-    """
+    """Gather data for graphical view
+
     Retreives a list of authorized users' activities, and
     converts json containing activities into a dataframe.
 
-    Parameters:
+    Args:
         None
     
     Returns:
-        activitiy_data_frame: dataframe containing all activities
+        activitiy_data_frame(dataframe): dataframe containing all activities
     """
     connection = connect_to_strava()
     bool_premium_user = is_user_premium(connection = connection)
@@ -44,15 +45,16 @@ def strava_data_for_graph():
     return activity_data_frame
 
 def json_to_dict(activity_data):
-    """
+    """json to dictionary conversion kit.
+
     Converts list of acitvities in json form to a 
     Python dictionary.
 
-    Parameters:
-        activity_data: a json containing list of activities
+    Args:
+        activity_data(json): a json containing list of activities
     
     Returns:
-        data_dict: dictionary containing list of activities
+        data_dict(dict): dictionary containing list of activities
     """
     data_dict = {}
     if not activity_data:
@@ -70,15 +72,16 @@ def json_to_dict(activity_data):
     return data_dict
 
 def dict_to_df(dictionary):
-    """
+    """Dictionary to dataframe conversion kit.
+
     Converts a dictionary of authorized user's
     activities to a dataframe
 
-    Parameters:
-        dictionary: dictionary containing list of activities
+    Args:
+        dictionary(dict): dictionary containing list of activities
     
     Returns:
-        data_frame: dataframe containing all activities
+        data_frame(dataframe): dataframe containing all activities
     """
     data_frame= pd.DataFrame.from_dict(dictionary, orient='index')
     data_frame= data_frame.iloc[::-1]
@@ -86,12 +89,13 @@ def dict_to_df(dictionary):
     return data_frame
 
 def is_user_premium(connection):
-    """
-    Converts a dictionary of authorized user's
-    activities to a dataframe
+    """Is strava user a premium subscriber
 
-    Parameters:
-        connection: an instance of urllib3 Pool Manager 
+    Determines if a strava user is a premium subscriber. This is to 
+    determine if I can access their zone data through the API.
+
+    Args:
+        connection(object): an instance of urllib3 Pool Manager 
     
     Returns:
         boolean: returns boolean value for if the user is a strava
@@ -104,16 +108,18 @@ def is_user_premium(connection):
         return False
 
 def activity_zone(connection, activity_data_frame):
-    """
-    If a user is a premium member, add the zone of their activities to their 
-    activity dataframe
+    """Heart rate zone of activity
 
-    Parameters:
-        connection: an instance of urllib3 Pool Manager
-        activity_data_frame: dataframe containing id, date, avg watts, max watts
+    If a user is a premium member, add the zone of their activities to their 
+    activity dataframe. This is determined by finding the max time spent in each
+    heart rate zone for an activity defined by its id.
+
+    Args:
+        connection(object): an instance of urllib3 Pool Manager
+        activity_data_frame(dataframe): dataframe containing id, date, avg watts, max watts
     
     Returns:
-        activity_dataframe: returns an updated dataframe with zone data
+        activity_dataframe(dataframe): returns an updated dataframe with zone data
     """
     heart_rate_zones = []
     break_down_zones = dict()
