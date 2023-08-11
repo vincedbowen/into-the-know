@@ -14,7 +14,7 @@ Welcome to `Into the Know <https://github.com/vincedbowen/into-the-know>`_
    :caption: Contents:
 
    graph_generator
-   getting_started_guide
+   .. getting_started_guide
 
 Overview:
 =========
