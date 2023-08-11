@@ -11,15 +11,12 @@ dash.register_page(
 
 cycling_graph_title = html.H1("Your Cycling Graph", className="pt-3")
 
-cycling_graph_description = html.P('''Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Nunc nunc lorem, consectetur sed tincidunt in, tincidunt tempor odio. Integer posuere arcu nec ipsum 
-porta, vitae finibus erat varius. Curabitur mattis sapien a nisl maximus posuere. Praesent bibendum 
-libero eu posuere condimentum. Nunc quis dolor magna. Vivamus eu metus porta, rutrum ante id, vehicula 
-nisl. Vivamus sed nisi sed nisi dictum cursus sed ut libero. Vestibulum facilisis, quam at dictum rutrum, 
-justo quam condimentum elit, ac facilisis est dui vitae lectus. Sed imperdiet rhoncus ligula quis 
-feugiat. Integer quis est id ex porttitor tincidunt eu eget nibh. Maecenas congue, eros sed hendrerit 
-maximus, odio eros ullamcorper nunc, at tincidunt dolor urna et mi. Proin luctus ex quis ex luctus, id 
-semper felis suscipit. Integer nisl mi, luctus eu ligula sit amet, faucibus gravida orci.''')
+cycling_graph_description = html.P('''View historic trends in your power data obtained from
+the Strava API. Analyze your average watts and maximum watts for every ride. Hover over points
+to see the date and watts for specific rides. If you are a strava premium member (and you have enough API calls
+:/ ), you can view your average watts for rides taking place in different heart rate zones. The page may take
+more than a few seconds to update depending on how many rides you have. I am improving the page load time
+by minimizing API requests.''')
 
 
 strava_premium = html.Div(

@@ -8,15 +8,13 @@ dash.register_page(__name__)
 
 cycling_archetype_title = html.H1("Your Cycling Archetype", className="pt-3")
 
-cycling_archetype_description = html.P('''Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Nunc nunc lorem, consectetur sed tincidunt in, tincidunt tempor odio. Integer posuere arcu nec ipsum 
-porta, vitae finibus erat varius. Curabitur mattis sapien a nisl maximus posuere. Praesent bibendum 
-libero eu posuere condimentum. Nunc quis dolor magna. Vivamus eu metus porta, rutrum ante id, vehicula 
-nisl. Vivamus sed nisi sed nisi dictum cursus sed ut libero. Vestibulum facilisis, quam at dictum rutrum, 
-justo quam condimentum elit, ac facilisis est dui vitae lectus. Sed imperdiet rhoncus ligula quis 
-feugiat. Integer quis est id ex porttitor tincidunt eu eget nibh. Maecenas congue, eros sed hendrerit 
-maximus, odio eros ullamcorper nunc, at tincidunt dolor urna et mi. Proin luctus ex quis ex luctus, id 
-semper felis suscipit. Integer nisl mi, luctus eu ligula sit amet, faucibus gravida orci.''')
+cycling_archetype_description = html.P('''Enter your power maximums for different
+lengths of time. These power maximums can often be found on your bike computer or its
+companion application if you ride with a power meter. If you don't have this data, but you
+know your FTP, various calculators can be found online. I am hoping to integrate this with
+the Strava API in the future, but their power stream documentation is quite confusing, and to 
+perform these calculations would require a hefty algorithm and a HUGE number of API calls. 
+This will have to do for now :)''')
 
 power_form = dbc.Form(
     id= "power-form",
