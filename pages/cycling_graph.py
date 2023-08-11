@@ -9,6 +9,16 @@ dash.register_page(
     __name__
 )
 
+cycling_graph_title = html.H1("Your Cycling Graph", className="pt-3")
+
+cycling_graph_description = html.P('''View historic trends in your power data obtained from
+the Strava API. Analyze your average watts and maximum watts for every ride. Hover over points
+to see the date and watts for specific rides. If you are a strava premium member (and you have enough API calls
+:/ ), you can view your average watts for rides taking place in different heart rate zones. The page may take
+more than a few seconds to update depending on how many rides you have. I am improving the page load time
+by minimizing API requests.''')
+
+
 strava_premium = html.Div(
     [
         dbc.Label("Do you have Strava Premium?"),
@@ -20,7 +30,8 @@ strava_premium = html.Div(
                 id="switches-input",
                 switch=True,
         ),
-    ]
+    ],
+    className = "pb-3"
 )
 
 graph_options = html.Div(
@@ -75,5 +86,15 @@ def update_graph(col_chosen):
         fig = px.line(data_frame_to_graph, x='Date', y='Average Watts', color = 'Heart Rate Zone')
     return fig
 
-layout = html.Div([strava_premium, graph_options, display_graph])
+layout = html.Div(
+    [
+        cycling_graph_title, 
+        cycling_graph_description,
+        dbc.Row(dbc.Col(html.Hr())), 
+        strava_premium, 
+        graph_options, 
+        display_graph
+    ], 
+    className="ps-5 pe-5"
+)
 

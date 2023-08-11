@@ -6,7 +6,15 @@ import pandas as pd
 
 dash.register_page(__name__)
 
+cycling_archetype_title = html.H1("Your Cycling Archetype", className="pt-3")
 
+cycling_archetype_description = html.P('''Enter your power maximums for different
+lengths of time. These power maximums can often be found on your bike computer or its
+companion application if you ride with a power meter. If you don't have this data, but you
+know your FTP, various calculators can be found online. I am hoping to integrate this with
+the Strava API in the future, but their power stream documentation is quite confusing, and to 
+perform these calculations would require a hefty algorithm and a HUGE number of API calls. 
+This will have to do for now :)''')
 
 power_form = dbc.Form(
     id= "power-form",
@@ -60,7 +68,7 @@ power_form = dbc.Form(
             dbc.Col(dbc.Button("Graph", color="primary"), width="auto", class_name= "py-3"),
         ],
     )],
-    class_name="py-5 px-0"
+    class_name="py-5"
 )
 
 graph = html.Div([
@@ -100,13 +108,17 @@ def update_radar_graph(power_form, one_sec_max, ten_sec_max, one_min_max, five_m
 
 
 layout = dbc.Container(
-    children = dbc.Row(
-        [
-            dbc.Col(power_form, class_name="ps-5 pe-0"), 
-            dbc.Col(graph, class_name="ps-0 pe-5")
-        ],
-        justify="around",
-        
-    )
+    children= [
+        cycling_archetype_title,
+        cycling_archetype_description,
+        dbc.Row(dbc.Col(html.Hr())),
+        dbc.Row(
+            [
+                dbc.Col(power_form, class_name="ps-5 pe-0"), 
+                dbc.Col(graph, class_name="ps-0 pe-5")
+            ],
+            justify="around", 
+        )
+    ]
 )
 
