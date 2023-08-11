@@ -4,6 +4,8 @@ import dash_bootstrap_components as dbc
 
 app = dash.Dash(__name__, use_pages=True, external_stylesheets=[dbc.themes.FLATLY])
 
+INK_LOGO = "logo.jpeg"
+
 navbar = dbc.NavbarSimple(
     children=[
         dbc.DropdownMenu(
@@ -30,6 +32,8 @@ navbar = dbc.NavbarSimple(
     brand_href='/',
     color='primary',
     dark=True,
+    fluid=True,
+    class_name="ps-2 pe-5"
 )
 
 app.layout = html.Div([
