@@ -14,6 +14,7 @@ Welcome to `Into the Know <https://github.com/vincedbowen/into-the-know>`_
    :caption: Contents:
 
    graph_generator
+   getting_started_guide
 
 Overview:
 =========
@@ -27,7 +28,7 @@ with your strava data.
 
 Getting Started:
 ================
-Follow the steps in the :ref:`Getting Started Guide <_getting-started-guide>` to view your data!
+Follow the steps in the :ref:`Getting Started Guide <getting-started-guide>` to view your data!
 
 Indices and tables
 ==================
