@@ -25,6 +25,10 @@ If you have any suggestions or notice any problems, please `email me <vincent@vi
 Please note: This is by no means a production application, and nothing is perfect, but I hope you can enjoy messing around
 with your strava data.
 
+Getting Started:
+================
+Follow the steps in the :ref:`Getting Started Guide` to view your data!
+
 Indices and tables
 ==================
 
