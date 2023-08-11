@@ -9,6 +9,19 @@ dash.register_page(
     __name__
 )
 
+cycling_graph_title = html.H1("Your Cycling Graph", className="pt-3")
+
+cycling_graph_description = html.P('''Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Nunc nunc lorem, consectetur sed tincidunt in, tincidunt tempor odio. Integer posuere arcu nec ipsum 
+porta, vitae finibus erat varius. Curabitur mattis sapien a nisl maximus posuere. Praesent bibendum 
+libero eu posuere condimentum. Nunc quis dolor magna. Vivamus eu metus porta, rutrum ante id, vehicula 
+nisl. Vivamus sed nisi sed nisi dictum cursus sed ut libero. Vestibulum facilisis, quam at dictum rutrum, 
+justo quam condimentum elit, ac facilisis est dui vitae lectus. Sed imperdiet rhoncus ligula quis 
+feugiat. Integer quis est id ex porttitor tincidunt eu eget nibh. Maecenas congue, eros sed hendrerit 
+maximus, odio eros ullamcorper nunc, at tincidunt dolor urna et mi. Proin luctus ex quis ex luctus, id 
+semper felis suscipit. Integer nisl mi, luctus eu ligula sit amet, faucibus gravida orci.''')
+
+
 strava_premium = html.Div(
     [
         dbc.Label("Do you have Strava Premium?"),
@@ -20,7 +33,8 @@ strava_premium = html.Div(
                 id="switches-input",
                 switch=True,
         ),
-    ]
+    ],
+    className = "pb-3"
 )
 
 graph_options = html.Div(
@@ -75,5 +89,15 @@ def update_graph(col_chosen):
         fig = px.line(data_frame_to_graph, x='Date', y='Average Watts', color = 'Heart Rate Zone')
     return fig
 
-layout = html.Div([strava_premium, graph_options, display_graph])
+layout = html.Div(
+    [
+        cycling_graph_title, 
+        cycling_graph_description,
+        dbc.Row(dbc.Col(html.Hr())), 
+        strava_premium, 
+        graph_options, 
+        display_graph
+    ], 
+    className="ps-5 pe-5"
+)
 

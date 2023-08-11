@@ -6,7 +6,17 @@ import pandas as pd
 
 dash.register_page(__name__)
 
+cycling_archetype_title = html.H1("Your Cycling Archetype", className="pt-3")
 
+cycling_archetype_description = html.P('''Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Nunc nunc lorem, consectetur sed tincidunt in, tincidunt tempor odio. Integer posuere arcu nec ipsum 
+porta, vitae finibus erat varius. Curabitur mattis sapien a nisl maximus posuere. Praesent bibendum 
+libero eu posuere condimentum. Nunc quis dolor magna. Vivamus eu metus porta, rutrum ante id, vehicula 
+nisl. Vivamus sed nisi sed nisi dictum cursus sed ut libero. Vestibulum facilisis, quam at dictum rutrum, 
+justo quam condimentum elit, ac facilisis est dui vitae lectus. Sed imperdiet rhoncus ligula quis 
+feugiat. Integer quis est id ex porttitor tincidunt eu eget nibh. Maecenas congue, eros sed hendrerit 
+maximus, odio eros ullamcorper nunc, at tincidunt dolor urna et mi. Proin luctus ex quis ex luctus, id 
+semper felis suscipit. Integer nisl mi, luctus eu ligula sit amet, faucibus gravida orci.''')
 
 power_form = dbc.Form(
     id= "power-form",
@@ -60,7 +70,7 @@ power_form = dbc.Form(
             dbc.Col(dbc.Button("Graph", color="primary"), width="auto", class_name= "py-3"),
         ],
     )],
-    class_name="py-5 px-0"
+    class_name="py-5"
 )
 
 graph = html.Div([
@@ -100,13 +110,17 @@ def update_radar_graph(power_form, one_sec_max, ten_sec_max, one_min_max, five_m
 
 
 layout = dbc.Container(
-    children = dbc.Row(
-        [
-            dbc.Col(power_form, class_name="ps-5 pe-0"), 
-            dbc.Col(graph, class_name="ps-0 pe-5")
-        ],
-        justify="around",
-        
-    )
+    children= [
+        cycling_archetype_title,
+        cycling_archetype_description,
+        dbc.Row(dbc.Col(html.Hr())),
+        dbc.Row(
+            [
+                dbc.Col(power_form, class_name="ps-5 pe-0"), 
+                dbc.Col(graph, class_name="ps-0 pe-5")
+            ],
+            justify="around", 
+        )
+    ]
 )
 
