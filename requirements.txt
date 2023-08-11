@@ -8,3 +8,4 @@ pylint
 pytest
 dash_bootstrap_components
 numpy > 1.24.0
+pydata-sphinx-theme
