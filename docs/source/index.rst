@@ -12,6 +12,14 @@ Welcome to Into the Know's documentation!
 
 graph_generator
 
+Overview:
+=========
+This project is a Python App I created to learn and rabbit hole about various aspects of software development. 
+View your historic data regarding cycling power and running best efforts (pace for various distances). 
+
+Please note: This is by no means a production application, and nothing is perfect, but I hope you can enjoy messing around
+with your strava data.
+
 Indices and tables
 ==================
 
