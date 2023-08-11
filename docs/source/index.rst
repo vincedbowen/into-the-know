@@ -27,7 +27,7 @@ with your strava data.
 
 Getting Started:
 ================
-Follow the steps in the :ref:`Getting Started Guide` to view your data!
+Follow the steps in the :ref:`Getting Started Guide<getting_started>` to view your data!
 
 Indices and tables
 ==================
