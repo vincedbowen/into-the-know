@@ -67,15 +67,16 @@ def json_to_dict(activity_data):
     if not activity_data:
         return {}
     for i in range(len(activity_data)):
-        if activity_data[i]['device_watts'] is True:
-            if activity_data[i]['id'] not in data_dict.keys():
-                data_dict[activity_data[i]['id']] = {
-                    'Date' : activity_data[i]['start_date'],
-                    'Average Watts' : activity_data[i]['average_watts'], 
-                    'Maximum Watts' : activity_data[i]['max_watts']
-                }
-            else:
-                print("err")
+        if activity_data[i]['type'] == "Ride":
+            if activity_data[i]['device_watts'] is True:
+                if activity_data[i]['id'] not in data_dict.keys():
+                    data_dict[activity_data[i]['id']] = {
+                        'Date' : activity_data[i]['start_date'],
+                        'Average Watts' : activity_data[i]['average_watts'], 
+                        'Maximum Watts' : activity_data[i]['max_watts']
+                    }
+                else:
+                    print("err")
     return data_dict
 
 def dict_to_df(dictionary):
