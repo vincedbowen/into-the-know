@@ -67,7 +67,7 @@ def json_to_dict(activity_data):
     if not activity_data:
         return {}
     for i in range(len(activity_data)):
-        if activity_data[i]['device_watts'] is True:
+        if activity_data[i]['type'] == "Ride" and activity_data[i]['device_watts'] is True:
             if activity_data[i]['id'] not in data_dict.keys():
                 data_dict[activity_data[i]['id']] = {
                     'Date' : activity_data[i]['start_date'],
