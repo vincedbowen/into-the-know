@@ -26,16 +26,20 @@ power_form = dbc.Form(
                     dbc.Input(
                         id="one-second-power",
                         placeholder="Enter Power Max...",
+                        type="number"
+
                     ),
-                    dbc.Label("10 Second", html_for="example-email-grid"),
+                    dbc.Label("10 Second", html_for="power-grid-left"),
                     dbc.Input(
                         id="ten-second-power",
                         placeholder="Enter Power Max...",
+                        invalid="numeric"
                     ),
-                    dbc.Label("1 Minute", html_for="example-email-grid"),
+                    dbc.Label("1 Minute", html_for="power-grid-left"),
                     dbc.Input(
                         id="one-minute-power",
                         placeholder="Enter Power Max...",
+                        invalid="numeric"
                     ),
                 ],
                 width=5,
@@ -47,15 +51,27 @@ power_form = dbc.Form(
                         id="five-minute-power",
                         placeholder="Enter Power Max...",
                     ),
-                    dbc.Label("20 Minute", html_for="example-password-grid"),
+                    dbc.FormFeedback(
+                        "Please enter an integer value",
+                        type="invalid",
+                    ),
+                    dbc.Label("20 Minute", html_for="power-grid-right"),
                     dbc.Input(
                         id="twenty-minute-power",
                         placeholder="Enter Power Max...",
                     ),
-                    dbc.Label("1 Hour", html_for="example-password-grid"),
+                    dbc.FormFeedback(
+                        "Please enter an integer value",
+                        type="invalid",
+                    ),
+                    dbc.Label("1 Hour", html_for="power-grid-right"),
                     dbc.Input(
                         id="one-hour-power",
                         placeholder="Enter Power Max...",
+                    ),
+                    dbc.FormFeedback(
+                        "Please enter an integer value",
+                        type="invalid",
                     ),
                 ],
                 width=5,
@@ -70,6 +86,16 @@ power_form = dbc.Form(
     )],
     class_name="py-5"
 )
+@callback(
+    Output("one-second-power", "invalid"),
+    Input("one-second-power", "value"),
+    prevent_initial_call= True
+)
+def check_validity(num):
+    if num:
+        if num.isdigit():
+            return False
+    return True
 
 graph = html.Div([
     dcc.Graph(figure={}, id='archetype-graph',
